@@ -1,0 +1,30 @@
+{
+  "name": "samplecode.io",
+  "version": "1.0.0",
+  "description": "directory of tons of code examples",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/djamro2/samplecode.io.git"
+  },
+  "author": "Dan Jamrozik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djamro2/samplecode.io/issues"
+  },
+  "homepage": "https://github.com/djamro2/samplecode.io",
+  "devDependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.2",
+    "express-handlebars": "^2.0.1",
+    "gulp": "^3.9.0",
+    "gulp-livereload": "^3.8.0",
+    "gulp-nodemon": "^2.0.3",
+    "gulp-notify": "^2.2.0",
+    "gulp-uglify": "^1.2.0",
+    "mongoose": "^4.1.0"
+  }
+}
