@@ -4,6 +4,10 @@ var livereload = require('gulp-livereload');
 var nodemon = require('gulp-nodemon');
 var notify = require('gulp-notify');
 var uglify = require('gulp-uglify');
+var prefix = require('gulp-autoprefixer');
+var plumber = require('gulp-plumber');
+var watch = require('gulp-watch');
+var less = require('gulp-less');
 
 gulp.task('default', function() {
 	// listen for changes
@@ -20,11 +24,7 @@ gulp.task('default', function() {
 			.pipe(notify('Reloading page, please wait...'));
 	});
 	
-	//watch stylesheet files
-	gulp.watch('client/css/styles.css', function(event){
-		gulp.src('client/css/styles.css')
-	        .pipe(livereload());
-	});
+	gulp.watch('./client/css/styles.less', ['less']);
 	
 	//watch html files
 	gulp.watch('views/**/*', function(event){
@@ -38,6 +38,17 @@ gulp.task('default', function() {
 	        .pipe(livereload());
 	});
 	
+});
+
+gulp.task('less', function() {
+    return gulp.src('./client/css/styles.less')  // only compile the entry file
+        .pipe(plumber())
+        .pipe(less({
+          paths: ['./', './overrides/']
+        }))
+        .pipe(prefix("last 8 version", "> 1%", "ie 8", "ie 7"), {cascade:true})
+        .pipe(gulp.dest('./client/css/'))
+        .pipe(livereload());
 });
 
 gulp.task('scripts', function(){
