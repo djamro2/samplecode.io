@@ -1,10 +1,23 @@
 <!-- the point of this page is to just wrap content with loaded scripts and files in one place -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="SampleCodeApp">
 <head>
 	<meta charset="UTF-8">
+	
+	<!-- things for styles -->
+	<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/css/styles.css" /> 
+	
+	<!-- scripts -->
+	<script type="text/javascript" src="/scripts/angular.min.js"></script>
+	<script type="text/javascript" src="/scripts/angular-route.min.js"></script>
+	<script type="text/javascript" src="/scripts/angular-resource.min.js"></script>
+	<script type="text/javascript" src="/app/app.js"></script>
+	<script type="text/javascript" src="/app/controllers/SubmitCtrl.js"></script>
+	
+	<!-- metadata and shit -->
 	<title>{{title}}</title>
+	
 </head>
 <body>
 	{{{body}}}
