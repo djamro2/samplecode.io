@@ -9,6 +9,7 @@ controllers.controller('SubmitController', ['$scope', 'SubmitService',
 	
 	self.init = function(){
 		//nothing yet	
+		var x = 3;
 	};
 	
 	$scope.submit = function(submitObj)
