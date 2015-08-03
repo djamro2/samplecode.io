@@ -1,9 +1,10 @@
 <div class="left-col">
+	<a href="/">
 	<div class="logo">
 		Sample Code
 	</div>
+	</a>
 </div>
-
 <div class="content-col" ng-controller="SubmitController">
 	<div class="submit-title">
 		<strong>Submit a SampleCode</strong>
@@ -15,6 +16,22 @@
 		<textarea rows="7" ng-model="sample.description" required></textarea>
 		<div class="center-form">
 			<div class="input-row">
+				<span>Framework/Language:</span>
+				<select type="text" 
+					ng-model="sample.framework" 
+					ng-options="framework.name for framework in frameworks track by framework.value || framework.name" 
+					required="">
+				</select>
+			</div>
+			<div ng-if="sample.framework == 'new'" class="input-row">
+				<span class="new-item">New Framework/Langauge:</span>
+				<input type="text" ng-model="sample.newFramework" required=""/>
+			</div>
+			<div class="input-row">
+				<span>Title for sample:</span>
+				<input type="text" ng-model="sample.title" required=""/>
+			</div>
+			<div class="input-row">
 				<span>Name/nickname:</span>
 				<input type="text" ng-model="sample.name" required=""/>
 			</div>
@@ -25,6 +42,7 @@
 			</div>
 		</div>
 		<div class="button-row">
+			<span ng-if="submittedCorrected">Post submitted correctly! Will approve samplecode shortly</span>
 			<button type="submit">Submit</button>
 		</div>
 	</form>

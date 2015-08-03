@@ -1,7 +1,11 @@
+
+var Framework = require('../models/framework');
+var FrameworkController = require('./FrameworkController');
 var Sample = require('../models/sample');
 var moment = require('moment');
 
-module.exports.getSubmitPage = function(req, res){
+module.exports.getSubmitPage = function(req, res)
+{
 	
 	//data will contain some preloaded data from the server
 	var data = {
@@ -22,13 +26,34 @@ module.exports.saveSample = function(req, res){
 		
 		var okEmail = sample.email && sample.email.length <= 100;
 		var okName = sample.name && sample.name.length <= 100;
+		var okTitle = sample.title && sample.title.length <= 500;
 		var okDescription = sample.description && sample.description.length <= 5000;
 		var okEmbeded = sample.embeded && sample.embeded.length <= 1000;
 		
-		if (okEmail && okName && okDescription && okEmbeded && result.length <= 3){
-			sample.save(function(error, result){
-				res.json(result);
-			});
+		var okAll;
+		
+		if(okEmail && okName && okTitle && okDescription && okEmbeded)
+			okAll = true;
+		else 
+			okAll = false;
+		
+		if (okAll && result.length <= 3){
+			//make new framework if needed
+			if (req.body.framework === 'new')
+			{
+				sample.framework = req.body.newFramework;
+				FrameworkController.saveFramework(req.body.newFramework, function(result){
+					sample.save(function(error, result){
+						res.json(result);
+					});
+				});
+			}
+			else{
+				sample.save(function(error, result){
+					res.json(result);
+				});				
+			}
+
 		} else {
 			res.status(500).send('server could not save sample');
 		}		

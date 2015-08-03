@@ -6,3 +6,9 @@ factories.factory('SubmitService', function($resource){
 		update: {method: 'PUT'}
 	});
 });
+
+factories.factory('FrameworkService', function($resource){
+	return $resource('/api/framework', {}, {
+		update: {method: 'PUT'}
+	});
+});
