@@ -4,23 +4,23 @@
 	</div>
 </div>
 
-<div class="content-col">
+<div class="content-col" ng-controller="SubmitController">
 	<div class="submit-title">
 		<strong>Submit a SampleCode</strong>
 	</div>
-	<form name="form" class="submit-form">
-		<p class="input-info">CodePen embed code</p>
-		<textarea rows="7" required></textarea>
+	<form name="form" ng-submit="submit(sample)" class="submit-form">
+		<p class="input-info">CodePen embeded code</p>
+		<textarea rows="7" ng-model="sample.embeded" required></textarea>
 		<p class="input-info">Description</p>
-		<textarea rows="7" required></textarea>
+		<textarea rows="7" ng-model="sample.description" required></textarea>
 		<div class="center-form">
 			<div class="input-row">
 				<span>Name/nickname:</span>
-				<input type="text" required=""/>
+				<input type="text" ng-model="sample.name" required=""/>
 			</div>
 			<div class="input-row">
 				<span>Email:</span>
-				<input type="text" />
+				<input ng-model="sample.email" type="text" />
 				(optional)
 			</div>
 		</div>
