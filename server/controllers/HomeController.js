@@ -1,3 +1,6 @@
+
+var Framework = require('../models/framework');
+
 module.exports.getHomePage = function(req, res){
 	
 	//data will contain some preloaded data from the server
@@ -5,7 +8,11 @@ module.exports.getHomePage = function(req, res){
 	  layout: 'simplelayout',
 	  title: 'SampleCode'
 	};
-	  
-	res.render('homepage', data);
+	
+	//need to pass in all frameworks for the sidebar
+	Framework.find({}, function(error, result){
+		data.frameworks = result;
+		res.render('homepage', data);
+	});  
 	
 };

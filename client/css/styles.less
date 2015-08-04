@@ -1,5 +1,10 @@
 @darkblue: #000080;
+@darkerblue: #00001F;
 @leftColWidth: 275px;
+
+* {
+	font-family: sans-serif;
+}
 
 html, body {
 	height: 100%;
@@ -65,22 +70,58 @@ html, body {
 }
 
 .left-col {
+	
 	display: inline-block;
 	position: fixed;
 	width: 100%;
 	max-width: @leftColWidth;
 	height: 100%;
-	background-color: @darkblue;
-	border-right: 10px solid lightblue;
+	background-color: #007ACC;
+	border-right: 10px solid #C6E4EE;
+	
+	a {
+		text-decoration: none!important;
+	}
+	
+	.col-item {
+		margin-top: 5px;
+		background: @darkblue;
+		padding: 20px 0;
+		width: @leftColWidth;
+		margin-right: 5px; //to account for border-right
+		color: white;
+		text-align: center;
+	}
+	
 	.logo {
 		font-family: 'Montserrat', sans-serif;
 		color: white;
 		text-align: center;
-		margin-right: 10px; //to account for border-right
+		margin-right: 5px; //to account for border-right
 		font-size: 1.6em;
 		padding: 20px 0;
 	}
-	a {
-		text-decoration: none!important;
+	
+	.list-title {
+		color:white;
+		margin-left: 5px;
+		margin-top: 25px;
+		text-align: center;
+		margin-bottom: 15px;
 	}
+	
+	.row-item {
+		margin-top: 5px;
+		background: @darkblue;
+		padding: 5px 0;
+		width: @leftColWidth;
+		margin-right: 5px; //to account for border-right
+		color: white;
+		text-align: center;
+	}
+	
+	.col-item-list {
+		margin-bottom: 25px;
+	}
+
 }

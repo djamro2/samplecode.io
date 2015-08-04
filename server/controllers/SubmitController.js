@@ -17,6 +17,15 @@ module.exports.getSubmitPage = function(req, res)
 	
 };
 
+module.exports.getAllSamples = function(req, res)
+{
+	
+	Sample.find({}, function(error, result){
+		res.json(result);
+	});
+	
+};
+
 module.exports.saveSample = function(req, res){
 	
 	var sample = new Sample(req.body);
@@ -36,10 +45,12 @@ module.exports.saveSample = function(req, res){
 			okAll = true;
 		else 
 			okAll = false;
+			
+		console.log(sample);
 		
 		if (okAll && result.length <= 3){
 			//make new framework if needed
-			if (req.body.framework === 'new')
+			if (req.body.framework.value === 'new')
 			{
 				sample.framework = req.body.newFramework;
 				FrameworkController.saveFramework(req.body.newFramework, function(result){
@@ -48,7 +59,9 @@ module.exports.saveSample = function(req, res){
 					});
 				});
 			}
-			else{
+			else
+			{
+				sample.framework = req.body.framework.name;
 				sample.save(function(error, result){
 					res.json(result);
 				});				
