@@ -32,7 +32,7 @@ gulp.task('default', function() {
 	        .pipe(livereload());
 	});
 	
-	//watch front-end app files in general, no need to restart completely
+	//watch front-end app files in general, no need to restart completely.
 	gulp.watch('client/app/**/*', function(event){
 		gulp.src('client/app/**/*')
 	        .pipe(livereload());
