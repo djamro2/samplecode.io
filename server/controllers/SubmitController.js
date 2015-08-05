@@ -33,7 +33,10 @@ module.exports.saveSample = function(req, res){
 	//make sure that there have been no more than 3 samples in the past minute
 	Sample.find( {date: { $gte : moment().add(-1, 'minutes')} }, function(error, result){
 		
-		var okEmail = sample.email && sample.email.length <= 100;
+		var okEmail = true;//since email is optional
+		if(sample.email)
+			var okEmail = sample.email.length <= 100;
+					
 		var okName = sample.name && sample.name.length <= 100;
 		var okTitle = sample.title && sample.title.length <= 500;
 		var okDescription = sample.description && sample.description.length <= 5000;
@@ -45,8 +48,6 @@ module.exports.saveSample = function(req, res){
 			okAll = true;
 		else 
 			okAll = false;
-			
-		console.log(sample);
 		
 		if (okAll && result.length <= 3){
 			//make new framework if needed

@@ -1,5 +1,6 @@
 
 var Framework = require('../models/framework');
+var Sample = require('../models/sample');
 
 module.exports.getHomePage = function(req, res){
 	
@@ -11,8 +12,19 @@ module.exports.getHomePage = function(req, res){
 	
 	//need to pass in all frameworks for the sidebar
 	Framework.find({}, function(error, result){
-		data.frameworks = result;
-		res.render('homepage', data);
+		
+		Sample.find({})
+			  .sort('-date')
+			  .limit(10)
+			  .exec(function(sampleError, sampleResult){
+			
+			data.recentSamples = sampleResult;
+			
+			data.frameworks = result;
+			res.render('homepage', data);
+			
+		});
+
 	});  
 	
 };
