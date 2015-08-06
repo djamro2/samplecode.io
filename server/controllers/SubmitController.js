@@ -13,7 +13,22 @@ module.exports.getSubmitPage = function(req, res)
 	  title: 'Submit a SampleCode'
 	};
 	  
-	res.render('submitpage', data);
+	//need to pass in all frameworks for the sidebar
+	Framework.find({}, function(error, result){
+		
+		Sample.find({})
+			  .sort('-date')
+			  .limit(10)
+			  .exec(function(sampleError, sampleResult){
+			
+			data.recentSamples = sampleResult;
+			
+			data.frameworks = result;
+			res.render('submitpage', data);
+			
+		});
+
+	});  
 	
 };
 
@@ -30,33 +45,23 @@ module.exports.saveSample = function(req, res){
 	
 	var sample = new Sample(req.body);
 	
-	//make sure that there have been no more than 3 samples in the past minute
+	//make sure that there have been no more than 5 samples in the past minute
 	Sample.find( {date: { $gte : moment().add(-1, 'minutes')} }, function(error, result){
 		
-		var okEmail = true;//since email is optional
-		if(sample.email)
-			var okEmail = sample.email.length <= 100;
-					
-		var okName = sample.name && sample.name.length <= 100;
-		var okTitle = sample.title && sample.title.length <= 500;
-		var okDescription = sample.description && sample.description.length <= 5000;
-		var okEmbeded = sample.embeded && sample.embeded.length <= 1000;
+		//set lookupTitle
+		sample.lookupTitle = sample.title.cleanup();
 		
-		var okAll;
-		
-		if(okEmail && okName && okTitle && okDescription && okEmbeded)
-			okAll = true;
-		else 
-			okAll = false;
-		
-		if (okAll && result.length <= 3){
+		if (result.length <= 5){
 			//make new framework if needed
 			if (req.body.framework.value === 'new')
 			{
 				sample.framework = req.body.newFramework;
 				FrameworkController.saveFramework(req.body.newFramework, function(result){
 					sample.save(function(error, result){
-						res.json(result);
+						if (!error)
+							res.json(result);
+						else
+							res.status(500).send(error);
 					});
 				});
 			}
@@ -64,7 +69,10 @@ module.exports.saveSample = function(req, res){
 			{
 				sample.framework = req.body.framework.name;
 				sample.save(function(error, result){
-					res.json(result);
+					if (!error)
+						res.json(result);
+					else
+						res.status(500).send(error);
 				});				
 			}
 
@@ -75,3 +83,7 @@ module.exports.saveSample = function(req, res){
 
 	
 };
+
+String.prototype.cleanup = function() {
+   return this.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
+}

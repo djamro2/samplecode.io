@@ -123,3 +123,50 @@ body {
 .recent-samples .recent-sample .title {
   font-weight: bold;
 }
+.search-examples {
+  height: 500px;
+  width: 100%;
+  border: 1px solid #000080;
+  margin-bottom: 50px;
+}
+.search-examples .sort {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+.search-examples .sort .select-search {
+  margin-right: 30px;
+}
+.search-examples .sort .select-amount {
+  margin-right: 30px;
+}
+.search-examples input {
+  display: inline-block;
+  margin: 20px;
+  width: 70%;
+  padding-left: 5px;
+}
+.search-examples button {
+  width: 21%;
+}
+.search-examples table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.search-examples table thead td {
+  text-align: center;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+  padding: 5px 0;
+}
+.search-examples table thead td:not(:last-child) {
+  border-right: 1px solid #666;
+}
+.search-examples table thead .title {
+  width: 60%;
+}
+.search-examples table thead .date-submitted {
+  width: 20%;
+}
+.search-examples table thead .author {
+  width: 20%;
+}

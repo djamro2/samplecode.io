@@ -1,10 +1,26 @@
 <div class="left-col">
 	<a href="/">
-	<div class="logo">
-		Sample Code
+		<div class="logo">
+			Sample Code
+		</div>
+	</a>
+	<div class="list-title">
+		Frameworks
 	</div>
+	<div class="col-item-list">
+		{{#each frameworks}}
+			<a href="/framework/{{name}}">
+				<div class="row-item">{{name}}</div>
+			</a>	
+		{{/each}}
+	</div>
+	<a href="/submit">
+		<div class="col-item submit-sample">
+			Submit Sample
+		</div>
 	</a>
 </div>
+
 <div class="content-col" ng-controller="SubmitController">
 	<div class="submit-title">
 		<strong>Submit a SampleCode</strong>

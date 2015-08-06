@@ -146,3 +146,53 @@ html, body {
 	}
 
 }
+
+.search-examples {
+	height: 500px;
+	width: 100%;
+	border: 1px solid @darkblue;
+	margin-bottom: 50px;
+	.sort {
+		margin-left: 20px;
+		margin-bottom: 20px;
+		.select-search {
+			margin-right: 30px;
+		}
+		.select-amount {
+			margin-right: 30px;
+		}
+	}
+	input {
+		display: inline-block;
+		margin: 20px;
+		width: 70%;
+		padding-left: 5px;
+	}
+	button {
+		width: 21%;
+	}
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		thead {
+			td {
+				text-align: center;
+				border-top: 1px solid #666;
+				border-bottom: 1px solid #666;
+				padding: 5px 0;
+			}
+			td:not(:last-child){
+				border-right: 1px solid #666;
+			}
+			.title {
+				width: 60%;
+			}
+			.date-submitted {
+				width: 20%;
+			}
+			.author {
+				width: 20%;
+			}
+		}
+	}
+}

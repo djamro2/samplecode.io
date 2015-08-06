@@ -21,16 +21,64 @@
 	</a>
 </div>
 
-<div class="content-col">
+<div ng-controller="HomeController" class="content-col">
+	
+	<h2>Find Examples</h2>
+	<form name="searchForm">
+	<div class="search-examples">
+		<input type="text" ng-model="search.query" placeholder="search query" required>
+		<button type="submit" ng-click="search(search)">Search</button>
+		<div class="sort">
+			Sort by:
+			<select class="select-search" 
+					ng-model="search.sort"
+					ng-init="search.sort = 'alphabetical'">
+				<option value="alphabetical">Alphabetical</option>
+			</select>
+			
+			Amount per page:
+			<select ng-model="search.amount"
+					ng-init="search.amount = '20'"
+					class="select-amount">
+				<option value="20">20</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+			</select>
+			
+			Page
+			<select ng-model="search.page"
+					ng-init="search.page = '1'"
+					class="select-search">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+		</div>
+		<table>
+			<thead>
+				<td class="title">Title</td>
+				<td class="date-submitted">Date Submitted</td>
+				<td class="author">Author</td>
+			</thead>
+			<tbody>
+				<tr ng-repeat="result in searchResults">
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</form>
+	
 	<div class="recent-samples">
 		<div class="header">
 			<strong>Last 10 samples submitted</strong>
 		</div>
 		{{#each recentSamples}}
 			<div class="recent-sample">
-				<a href="/sample/{{title}}"><p class="title">{{title}}</p></a>
+				<a href="/sample/{{lookupTitle}}"><p class="title">{{title}}</p></a>
 				<p class="description">{{description}}</p>
 			</div>
 		{{/each}}
 	</div>
+	
 </div>

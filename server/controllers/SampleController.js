@@ -6,8 +6,8 @@ module.exports.getSamplePage = function(req, res)
 	
 	var samplePage = req.params.id;
 	
-	Sample.findOne( {title: samplePage}, function(error, result){
-		if (!error){
+	Sample.findOne( {lookupTitle: samplePage}, function(error, result){
+		if (result){
 			
 			var data = {
 				layout: 'simplelayout',
@@ -22,7 +22,7 @@ module.exports.getSamplePage = function(req, res)
 			});
 			
 		} else {
-			res.render('Could not find that sample!');
+			res.send('Could not find the sample: ' + samplePage);
 		}
 	});
 

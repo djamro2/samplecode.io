@@ -9,7 +9,7 @@
 	</div>
 	<div class="col-item-list">
 		{{#each samples}}
-			<a href="/sample/{{title}}">
+			<a href="/sample/{{lookupTitle}}">
 				<div class="row-item">{{title}}</div>
 			</a>	
 		{{/each}}
@@ -28,7 +28,7 @@
 		</div>
 		{{#each recentSamples}}
 			<div class="recent-sample">
-				<a href="/sample/{{title}}"><p class="title">{{title}}</p></a>
+				<a href="/sample/{{lookupTitle}}"><p class="title">{{title}}</p></a>
 				<p class="description">{{description}}</p>
 			</div>
 		{{/each}}
