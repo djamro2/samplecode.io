@@ -154,19 +154,27 @@ body {
 }
 .search-examples table thead td {
   text-align: center;
-  border-top: 1px solid #666;
-  border-bottom: 1px solid #666;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
   padding: 5px 0;
 }
 .search-examples table thead td:not(:last-child) {
-  border-right: 1px solid #666;
+  border-right: 1px solid 444;
 }
 .search-examples table thead .title {
-  width: 60%;
+  width: 50%;
 }
 .search-examples table thead .date-submitted {
-  width: 20%;
+  width: 25%;
 }
 .search-examples table thead .author {
-  width: 20%;
+  width: 25%;
+}
+.search-examples table tbody td {
+  padding: 5px;
+  padding-left: 10px;
+  border-bottom: 1px solid #888;
+}
+.search-examples table tbody td:not(:last-child) {
+  border-right: 1px solid #888;
 }

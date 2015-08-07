@@ -27,19 +27,24 @@
 	<form name="searchForm">
 	<div class="search-examples">
 		<input type="text" ng-model="search.query" placeholder="search query" required>
-		<button type="submit" ng-click="search(search)">Search</button>
+		<button type="submit" ng-click="searchAll(search)">Search</button>
 		<div class="sort">
 			Sort by:
 			<select class="select-search" 
 					ng-model="search.sort"
-					ng-init="search.sort = 'alphabetical'">
-				<option value="alphabetical">Alphabetical</option>
+					ng-init="search.sort = '-date'; searchAll(search)"
+					ng-change="searchAll(search)">
+				<option value="relevance">Relevance</option>
+				<option value="title">Alphabetical</option>
+				<option value="framework">Framework</option>
+				<option value="-date">Newest</option>
 			</select>
 			
 			Amount per page:
 			<select ng-model="search.amount"
 					ng-init="search.amount = '20'"
-					class="select-amount">
+					class="select-amount"
+					ng-change="searchAll(search)">
 				<option value="20">20</option>
 				<option value="50">50</option>
 				<option value="100">100</option>
@@ -48,7 +53,8 @@
 			Page
 			<select ng-model="search.page"
 					ng-init="search.page = '1'"
-					class="select-search">
+					class="select-search"
+					ng-change="searchAll(search)">
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
@@ -61,8 +67,10 @@
 				<td class="author">Author</td>
 			</thead>
 			<tbody>
-				<tr ng-repeat="result in searchResults">
-					
+				<tr ng-repeat="result in searchResult">
+					<td ng-bind="result.title"></td>
+					<td ng-bind="getFormattedDate(result.date)"></td>
+					<td ng-bind="result.name"></td>
 				</tr>
 			</tbody>
 		</table>

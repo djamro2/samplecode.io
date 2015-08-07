@@ -1,3 +1,4 @@
+/* global moment */
 /* global angular */
 'use strict';
 
@@ -13,11 +14,16 @@ controllers.controller('HomeController', ['$scope', 'SubmitService', 'FrameworkS
 		//nothing yet
 	};
 	
-	$scope.search = function(search)
+	$scope.getFormattedDate = function(date){
+		var formattedDate = moment( new Date(date)).format("MM/DD/YYYY hh:mma");
+		return formattedDate;
+	}
+	
+	$scope.searchAll = function(searchObj)
 	{
 		//uses a post to pass in an object to search the database
-		SearchService.findWithObject(search, function(result){
-			//nothing here yet
+		SearchService.searchAllWithObject(searchObj, function(result){
+			$scope.searchResult = result;
 		});
 	}
 	

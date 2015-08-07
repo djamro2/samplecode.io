@@ -14,6 +14,7 @@ module.exports = function(app)
 	
 	//api
 	app.post('/api/submit', SubmitController.saveSample);
+	app.post('/api/search/all', HomeController.searchAll);
 	app.get('/api/sample', SubmitController.getAllSamples);
 	app.get('/api/framework', FrameworkController.getAllFrameworks);
 }
