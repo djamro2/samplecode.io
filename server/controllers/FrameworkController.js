@@ -32,6 +32,7 @@ module.exports.getFrameworkPage = function(req, res)
 					  .exec(function(sampleError, sampleResult){
 					
 					data.recentSamples = sampleResult;
+					data.framework = frameworkName;
 					res.render('frameworkpage', data);
 					
 				});
@@ -55,4 +56,61 @@ module.exports.saveFramework = function(frameworkName, callback)
 	framework.save(function(error, result){
 		callback(result);
 	});
+}
+
+module.exports.searchFramework = function(req, res)
+{
+	
+	var query, sortBy, page, amount, framework;
+
+	query = req.body.query;	
+	sortBy = req.body.sort || '-date';
+	page = req.body.page || 1;
+	amount = req.body.amount || 20;
+	framework = req.body.framework;
+	
+	var skipAmt = (page * amount) - amount;
+	
+	if (!query){
+		Sample.find({framework: framework})
+		.sort(sortBy)
+		.limit(amount)
+		.exec (function(error, result){
+			res.json(result);
+		});
+		return;
+	}
+	
+	if (sortBy == 'relevance')
+	{
+		//needs query to work
+		if(!query)
+		{
+			res.status(500).send('Needs query to sort by relevance');
+		}
+		
+		Sample.find(
+			{ $text : { $search : query}},
+			{ score : { $meta : "textScore"}}
+		)
+		.sort({ score: { $meta : 'textScore'} })
+		.skip(skipAmt)
+		.limit(amount)
+		.exec (function(error, result){
+			res.json(result);
+		});
+		return;
+	}
+	
+	Sample.find(
+		{ $text : { $search : query}, 
+		  framework : framework }
+	)
+	.sort(sortBy)
+	.skip(skipAmt)
+	.limit(amount)
+	.exec (function(error, result){
+		res.json(result);
+	});
+	
 }

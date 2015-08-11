@@ -4,14 +4,15 @@
 
 var controllers = controllers || angular.module('SampleCode.controllers', []);
 
-controllers.controller('HomeController', ['$scope', 'SubmitService', 'FrameworkService', 'SearchService',
+controllers.controller('FrameworkController', ['$scope', 'SubmitService', 'FrameworkService', 'SearchService',
 	function($scope, SubmitService, FrameworkService, SearchService){
 
 	var self = this;
 	
+	$scope.search = {};
 	
 	self.init = function(){
-		//nothing yet
+		//nothing right now
 	};
 	
 	$scope.getFormattedDate = function(date){
@@ -22,7 +23,7 @@ controllers.controller('HomeController', ['$scope', 'SubmitService', 'FrameworkS
 	$scope.searchAll = function(searchObj)
 	{
 		//uses a post to pass in an object to search the database
-		SearchService.searchAllWithObject(searchObj, function(result){
+		SearchService.searchFrameworkWithObject(searchObj, function(result){
 			$scope.searchResult = result;
 		});
 	}

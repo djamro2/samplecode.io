@@ -162,13 +162,16 @@ body {
   border-right: 1px solid 444;
 }
 .search-examples table thead .title {
-  width: 50%;
+  width: 40%;
+}
+.search-examples table thead .framework {
+  width: 20%;
 }
 .search-examples table thead .date-submitted {
-  width: 25%;
+  width: 20%;
 }
 .search-examples table thead .author {
-  width: 25%;
+  width: 20%;
 }
 .search-examples table tbody td {
   padding: 5px;

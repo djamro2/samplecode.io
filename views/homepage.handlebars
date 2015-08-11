@@ -63,12 +63,14 @@
 		<table>
 			<thead>
 				<td class="title">Title</td>
+				<td class="framework">Framework</td>
 				<td class="date-submitted">Date Submitted</td>
 				<td class="author">Author</td>
 			</thead>
 			<tbody>
 				<tr ng-repeat="result in searchResult">
 					<td ng-bind="result.title"></td>
+					<td ng-bind="result.framework"></td>
 					<td ng-bind="getFormattedDate(result.date)"></td>
 					<td ng-bind="result.name"></td>
 				</tr>
