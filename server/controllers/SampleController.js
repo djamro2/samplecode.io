@@ -6,12 +6,14 @@ module.exports.getSamplePage = function(req, res)
 	
 	var samplePage = req.params.id;
 	
-	Sample.findOne( {lookupTitle: samplePage}, function(error, result){
-		if (result){
+	Sample.findOne( {lookupTitle: samplePage}, function(error, result) {
+		if (result) {
+			
+			var pageTitle = samplePage + ' - SampleCode';
 			
 			var data = {
 				layout: 'simplelayout',
-				title: samplePage
+				title: pageTitle
 			}
 			
 			data.sample = result;

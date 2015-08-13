@@ -1,12 +1,15 @@
 <div class="left-col">
+	
 	<a href="/">
 		<div class="logo">
 			Sample Code
 		</div>
 	</a>
+	
 	<div class="list-title">
 		Frameworks
 	</div>
+	
 	<div class="col-item-list">
 		{{#each frameworks}}
 			<a href="/framework/{{name}}">
@@ -14,21 +17,29 @@
 			</a>	
 		{{/each}}
 	</div>
+	
 	<a href="/submit">
 		<div class="col-item submit-sample">
 			Submit Sample
 		</div>
 	</a>
+	
 </div>
 
 <div ng-controller="HomeController" class="content-col">
 	
 	<h2>Find Examples</h2>
+	
 	<form name="searchForm">
+		
 	<div class="search-examples">
+		
 		<input type="text" ng-model="search.query" placeholder="search query" required>
+		
 		<button type="submit" ng-click="searchAll(search)">Search</button>
+		
 		<div class="sort">
+			
 			Sort by:
 			<select class="select-search" 
 					ng-model="search.sort"
@@ -59,36 +70,46 @@
 				<option value="2">2</option>
 				<option value="3">3</option>
 			</select>
+			
 		</div>
-		<table>
+		
+		<table class="search-table">
+			
 			<thead>
 				<td class="title">Title</td>
 				<td class="framework">Framework</td>
 				<td class="date-submitted">Date Submitted</td>
 				<td class="author">Author</td>
 			</thead>
+			
 			<tbody>
 				<tr ng-repeat="result in searchResult">
-					<td ng-bind="result.title"></td>
+					<td><a ng-bind="result.title" ng-href="/sample/{{angVar1}}"></a></td>
 					<td ng-bind="result.framework"></td>
 					<td ng-bind="getFormattedDate(result.date)"></td>
 					<td ng-bind="result.name"></td>
 				</tr>
 			</tbody>
+			
 		</table>
+		
 	</div>
+	
 	</form>
 	
 	<div class="recent-samples">
+		
 		<div class="header">
 			<strong>Last 10 samples submitted</strong>
 		</div>
+		
 		{{#each recentSamples}}
 			<div class="recent-sample">
 				<a href="/sample/{{lookupTitle}}"><p class="title">{{title}}</p></a>
 				<p class="description">{{description}}</p>
 			</div>
 		{{/each}}
+		
 	</div>
 	
 </div>

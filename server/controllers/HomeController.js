@@ -21,6 +21,7 @@ module.exports.getHomePage = function(req, res){
 			data.recentSamples = sampleResult;
 			
 			data.frameworks = result;
+			data.angVar1 = '{{result.lookupTitle}}';
 			res.render('homepage', data);
 			
 		});

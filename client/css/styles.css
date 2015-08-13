@@ -40,6 +40,27 @@ body {
 .content-col .submit-form textarea {
   width: 100%;
 }
+.content-col .demo-title {
+  margin-top: 30px;
+  font-size: 1.4em;
+  text-align: center;
+}
+.content-col .embeded {
+  padding-bottom: 20px;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+.content-col .summary {
+  margin-top: 20px;
+  text-align: center;
+}
+.content-col .summary .text {
+  padding-top: 20px;
+}
+.content-col .author {
+  padding-bottom: 20px;
+}
 .input-row {
   margin-top: 30px;
   width: 100%;
@@ -109,6 +130,9 @@ body {
 .left-col .col-item-list {
   margin-bottom: 25px;
 }
+.recent-samples {
+  padding-bottom: 30px;
+}
 .recent-samples a {
   text-decoration: none!important;
 }
@@ -148,36 +172,40 @@ body {
 .search-examples button {
   width: 21%;
 }
-.search-examples table {
+.search-examples .search-table {
   width: 100%;
   border-collapse: collapse;
 }
-.search-examples table thead td {
+.search-examples .search-table thead td {
   text-align: center;
   border-top: 1px solid #444;
   border-bottom: 1px solid #444;
   padding: 5px 0;
 }
-.search-examples table thead td:not(:last-child) {
+.search-examples .search-table thead td:not(:last-child) {
   border-right: 1px solid 444;
 }
-.search-examples table thead .title {
+.search-examples .search-table thead .title {
   width: 40%;
 }
-.search-examples table thead .framework {
+.search-examples .search-table thead .framework {
   width: 20%;
 }
-.search-examples table thead .date-submitted {
+.search-examples .search-table thead .date-submitted {
   width: 20%;
 }
-.search-examples table thead .author {
+.search-examples .search-table thead .author {
   width: 20%;
 }
-.search-examples table tbody td {
+.search-examples .search-table tbody td {
   padding: 5px;
   padding-left: 10px;
   border-bottom: 1px solid #888;
 }
-.search-examples table tbody td:not(:last-child) {
+.search-examples .search-table tbody td a {
+  text-decoration: none!important;
+  color: blue;
+}
+.search-examples .search-table tbody td:not(:last-child) {
   border-right: 1px solid #888;
 }

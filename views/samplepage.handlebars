@@ -1,3 +1,4 @@
+<!-- left column -->
 <div class="left-col">
 	<a href="/">
 		<div class="logo">
@@ -21,14 +22,20 @@
 	</a>
 </div>
 
+<!-- main column -->
 <div class="content-col" ng-controller="SubmitController">
-	<p>
-		embeded: {{sample.embeded}}
-	</p>
-	<p>
-		title: {{sample.title}}
-	</p>
-	<p>
-		description: {{sample.description}}
-	</p>
+	
+	<p class="demo-title">{{sample.title}} - Demo</p>
+	
+	<p class="author">Author: {{sample.name}}</p>
+	
+	<div class="embeded">
+		{{{sample.embeded}}}
+	</div>
+	
+	<div class="summary">
+		<p class="text">Description</p>
+		{{sample.description}}
+	</div>
+	
 </div>
