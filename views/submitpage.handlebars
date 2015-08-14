@@ -22,15 +22,23 @@
 </div>
 
 <div class="content-col" ng-controller="SubmitController">
+	
 	<div class="submit-title">
 		<strong>Submit a SampleCode</strong>
 	</div>
+	
 	<form name="form" ng-submit="submit(sample)" class="submit-form">
+		
 		<p class="input-info">CodePen embeded code</p>
+		
 		<textarea rows="7" ng-model="sample.embeded" required></textarea>
+		
 		<p class="input-info">Description</p>
+		
 		<textarea rows="7" ng-model="sample.description" required></textarea>
+		
 		<div class="center-form">
+			
 			<div class="input-row">
 				<span>Framework/Language:</span>
 				<select type="text" 
@@ -39,27 +47,36 @@
 					required="">
 				</select>
 			</div>
+			
 			<div ng-if="sample.framework.value == 'new'" class="input-row">
 				<span class="new-item">New Framework/Langauge:</span>
 				<input type="text" ng-model="sample.newFramework" required=""/>
 			</div>
+			
 			<div class="input-row">
 				<span>Title for sample:</span>
 				<input type="text" ng-model="sample.title" required=""/>
 			</div>
+			
 			<div class="input-row">
 				<span>Name/nickname:</span>
 				<input type="text" ng-model="sample.name" required=""/>
 			</div>
+			
 			<div class="input-row">
 				<span>Email:</span>
 				<input ng-model="sample.email" type="text" />
 				(optional)
 			</div>
+			
 		</div>
+		
 		<div class="button-row">
 			<span ng-if="submittedCorrect">Post submitted! Will approve samplecode shortly</span>
+			<span class="error-message" ng-if="existingTitle">Post could not be submitted! Title already exists. Pick a new one and try again.</span>
 			<button type="submit">Submit</button>
 		</div>
+		
 	</form>
+	
 </div>

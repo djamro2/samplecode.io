@@ -12,7 +12,7 @@ controllers.controller('SubmitController', ['$scope', 'SubmitService', 'Framewor
 	
 	
 	self.init = function(){
-		
+		//nothing yet
 	};
 	
 	FrameworkService.query(function(result){
@@ -28,8 +28,11 @@ controllers.controller('SubmitController', ['$scope', 'SubmitService', 'Framewor
 	{
 		SubmitService.save(submitObj, function(result){
 			$scope.submittedCorrect = true;
+			$scope.existingTitle = false;
 		}, function(error){
-			console.error(error);
+			if (error.data == 'existingTitle'){
+				$scope.existingTitle = true;
+			}
 		});
 	}
 	

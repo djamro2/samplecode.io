@@ -11,6 +11,9 @@ body {
   margin-top: 50px;
   text-align: right;
 }
+.button-row .error-message {
+  color: red;
+}
 .center-form {
   display: inline-block;
   margin-left: 130px;

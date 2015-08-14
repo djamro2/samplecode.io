@@ -51,34 +51,49 @@ module.exports.saveSample = function(req, res){
 		//set lookupTitle
 		sample.lookupTitle = sample.title.cleanup();
 		
-		if (result.length <= 5){
-			//make new framework if needed
-			if (req.body.framework.value === 'new')
+		//see if that title already exists, if do not save
+		Sample.find({lookupTitle: sample.lookupTitle}, function(error, result){
+			
+			if (result.length > 0){
+				res.status(409).send('existingTitle');
+			}
+			
+			else
 			{
-				sample.framework = req.body.newFramework;
-				FrameworkController.saveFramework(req.body.newFramework, function(result){
+		
+			if (result.length <= 5){
+				//make new framework if needed
+				if (req.body.framework.value === 'new')
+				{
+					sample.framework = req.body.newFramework;
+					FrameworkController.saveFramework(req.body.newFramework, function(result){
+						sample.save(function(error, result){
+							if (!error)
+								res.json(result);
+							else
+								res.status(500).send(error);
+						});
+					});
+				}
+				else
+				{
+					sample.framework = req.body.framework.name;
 					sample.save(function(error, result){
 						if (!error)
 							res.json(result);
 						else
 							res.status(500).send(error);
-					});
-				});
+					});				
+				}
+	
+			} else {
+				res.status(500).send('server could not save sample');
+			}		
+		
 			}
-			else
-			{
-				sample.framework = req.body.framework.name;
-				sample.save(function(error, result){
-					if (!error)
-						res.json(result);
-					else
-						res.status(500).send(error);
-				});				
-			}
-
-		} else {
-			res.status(500).send('server could not save sample');
-		}		
+			
+		});
+		
 	});
 
 	
