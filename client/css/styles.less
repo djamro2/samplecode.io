@@ -1,6 +1,7 @@
 @darkblue: #000080;
 @darkerblue: #00001F;
 @leftColWidth: 275px;
+@lightblue: #007ACC;
 
 * {
 	font-family: sans-serif;
@@ -13,17 +14,72 @@ html, body {
 }
 
 .button-row {
+	clear: both;
 	margin-top: 50px;
 	text-align: right;
 	.error-message {
 		color: red;
 	}
+	.left-button {
+		float: left;
+	}
+	.message {
+		padding-right: 15px;
+		font-weight: bold;
+	}
+	button {
+		margin-top: 30px;
+		margin-right: 20px;
+		background-color: @lightblue;
+		-moz-border-radius: 28px;
+		-webkit-border-radius: 28px;
+		border-radius: 28px;
+		border: 1px solid @darkblue;
+		display: inline-block;
+		cursor: pointer;
+		color: #ffffff;
+		font-family: Arial;
+		font-size: 17px;
+		padding: 16px 31px;
+		text-decoration: none;
+		text-shadow: 0px 1px 0px #2f6627;
+	}
+	button:hover {
+		background-color: darkblue;
+	}
+	button:active {
+		position: relative;
+		top: 1px;
+	}
+	button:focus {
+		outline: 0;
+	}
 }
 
 .center-form {
 	display: inline-block;
-	margin-left: 130px;
-	margin-top: 20px;
+	//margin-left: 130px;
+	margin-top: 30px;
+	float: right;
+	.dropdown {
+		position: relative;
+		display: inline-block;
+		border: 0;
+		select {
+			padding: 8px;
+			color: black;
+			display: block;
+			background: white;
+			height: 38px;
+			border: 1px solid #999;
+			font: normal 14px/16px "Segoe UI", Arial, Helvetica, Sans-serif;
+			outline: 0 none;
+		}
+	}
+	input {
+		height: 32px;
+		padding-left: 8px;
+	}
 }
 
 .content-col {
@@ -35,8 +91,7 @@ html, body {
 	padding-right: 20px;
 	font-family: sans-serif;
 	.input-info {
-		font-size: 1.2em;	
-		text-align: center;
+		font-size: 1.2em;
 		padding-top: 30px;
 	}
 	.submit-title {
@@ -46,7 +101,7 @@ html, body {
 	.submit-form {
 		margin-top: 10px;
 		textarea {
-			width: 100%;
+			width: 97%;
 		}
 	}
 	.demo-title {
@@ -82,14 +137,23 @@ html, body {
 		display: inline-block;
 		text-align: right;
 		width: 200px;
+		p {
+			display: block;
+		}
+	}
+	input {
+		width: 242px;
+		font-size: 14px;
 	}
 	input, select {
 		margin-left: 15px;
 		margin-right: 15px;
-		width: 250px;
 	}
 	select {
 		width: 250px + 3px;
+	}
+	.wide-span {
+		width: 470px;
 	}
 }
 
@@ -100,7 +164,7 @@ html, body {
 	width: 100%;
 	max-width: @leftColWidth;
 	height: 100%;
-	background-color: #007ACC;
+	background-color: @lightblue;
 	border-right: 10px solid #C6E4EE;
 	
 	a {

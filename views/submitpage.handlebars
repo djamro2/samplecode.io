@@ -29,7 +29,7 @@
 	
 	<form name="form" ng-submit="submit(sample)" class="submit-form">
 		
-		<p class="input-info">CodePen embeded code</p>
+		<p class="input-info">Embeded Demo Code</p>
 		
 		<textarea rows="7" ng-model="sample.embeded" required></textarea>
 		
@@ -41,39 +41,49 @@
 			
 			<div class="input-row">
 				<span>Framework/Language:</span>
-				<select type="text" 
-					ng-model="sample.framework" 
-					ng-options="framework.name for framework in frameworks track by framework.value || framework.name" 
-					required="">
-				</select>
+				<span class="dropdown">
+					<select type="text" 
+						ng-model="sample.framework" 
+						ng-options="framework.name for framework in frameworks track by framework.value || framework.name" 
+						required="">
+					</select>
+				</span>
 			</div>
 			
 			<div ng-if="sample.framework.value == 'new'" class="input-row">
 				<span class="new-item">New Framework/Langauge:</span>
-				<input type="text" ng-model="sample.newFramework" required=""/>
+				<input type="text" ng-model="sample.newFramework" required=""/> *
 			</div>
 			
 			<div class="input-row">
 				<span>Title for sample:</span>
-				<input type="text" ng-model="sample.title" required=""/>
+				<input type="text" ng-model="sample.title" required=""/> *
 			</div>
 			
 			<div class="input-row">
-				<span>Name/nickname:</span>
-				<input type="text" ng-model="sample.name" required=""/>
+				<span>Your Name/Nickname:</span>
+				<input type="text" ng-model="sample.name" required=""/> *
 			</div>
 			
 			<div class="input-row">
-				<span>Email:</span>
+				<span> Email:</span>
 				<input ng-model="sample.email" type="text" />
-				(optional)
+			</div>
+			
+			<div class="input-row">
+				<span class="wide-span">
+					* required <br/>
+					<br/>
+					email is used to stay in contact with you about
+					your sample if needed, nothing else
+				</span>
 			</div>
 			
 		</div>
 		
 		<div class="button-row">
-			<span ng-if="submittedCorrect">Post submitted! Will approve samplecode shortly</span>
-			<span class="error-message" ng-if="existingTitle">Post could not be submitted! Title already exists. Pick a new one and try again.</span>
+			<span class="message" ng-if="submittedCorrect">Post submitted! Will approve samplecode shortly</span>
+			<span class="message error-message" ng-if="existingTitle">Post could not be submitted! Title already exists. Pick a new one and try again.</span>
 			<button type="submit">Submit</button>
 		</div>
 		

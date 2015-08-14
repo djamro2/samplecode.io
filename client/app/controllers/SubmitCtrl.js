@@ -32,6 +32,7 @@ controllers.controller('SubmitController', ['$scope', 'SubmitService', 'Framewor
 		}, function(error){
 			if (error.data == 'existingTitle'){
 				$scope.existingTitle = true;
+				$scope.submittedCorrect = false;
 			}
 		});
 	}
