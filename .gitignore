@@ -27,4 +27,4 @@ build/Release
 node_modules
 
 #local_codes
-local_codes
+local_codes.js
